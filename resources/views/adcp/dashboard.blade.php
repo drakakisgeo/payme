@@ -27,10 +27,11 @@
             </tr>
             </thead>
             <tbody>
+
             @foreach($payments as $payment)
                 <tr>
                     <td>{!! $payment->code !!}</td>
-                    <td>{!! $payment->user->name !!}</td>
+                    <td>{!! $payment->user->name  or '[-]'!!}</td>
                     <td>{!! $payment->description !!}</td>
                     <td>{!! $payment->amount !!}
                         <small>€</small>

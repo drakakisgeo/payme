@@ -1,6 +1,7 @@
 @extends('template')
 
 @section('main')
+    @include('partials.errors')
     <div class="row">
         <div class="text-center" style="margin-top:50px;margin-bottom:20px;">
             <img src="{{URL::to('/')}}/logo.gif"

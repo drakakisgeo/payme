@@ -30,10 +30,14 @@ class PaymentsController extends Controller
     {
 
         $payment = Payment::where('code', $paymentcode)->firstOrFail();
-        $nonce = $request->get('payment_method_nonce');
 
-        $this->paymentmethod->pay($payment->amount,$request);
-
+        try{
+            $this->paymentmethod->pay($payment->amount,$request);
+        }catch(\Exception $e){
+            \Bugsnag::notifyError("BrainTreeError", $e->getMessage());
+            return redirect()->back()->with("errorMsg","Ops! Couldn't make the payment, make sure you are entering valid data.");
+        }
+        
         $this->updatePaymentStatus($payment);
         event(new PaymentWasPaid($payment));
         return redirect(route('thankyou'));

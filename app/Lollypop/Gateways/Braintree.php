@@ -11,13 +11,15 @@ class Braintree implements GatewayMethodInterface
 
     public $response;
 
-    public function pay($amount,Request $request)
+    public function pay($amount, Request $request)
     {
+
+        $nonce = $request->get('payment_method_nonce');
+
         $this->response = Braintree_Transaction::sale([
           'amount'             => $amount,
-          'paymentMethodNonce' => $request->get('payment_method_nonce')
+          'paymentMethodNonce' => $nonce
         ]);
-
 
         if (!$this->response->success) {
             throw new Exception($this->response->_attributes['message']);
