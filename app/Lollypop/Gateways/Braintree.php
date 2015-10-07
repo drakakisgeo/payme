@@ -18,7 +18,10 @@ class Braintree implements GatewayMethodInterface
 
         $this->response = Braintree_Transaction::sale([
           'amount'             => $amount,
-          'paymentMethodNonce' => $nonce
+          'paymentMethodNonce' => $nonce,
+          'options' => [
+            'submitForSettlement' => True
+          ]
         ]);
 
         if (!$this->response->success) {
