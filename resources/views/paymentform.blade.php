@@ -10,9 +10,7 @@
                 <small>Online Payments for Lollypop Services like Clicknsend, Billit and more...</small>
             </p>
         </div>
-        <div class="well">Lollypop created a special checkout page for you! <strong>Fill in your credit card or choose
-                paypal and you're good
-                to go!</strong>
+        <div class="well">Lollypop created a special checkout page for you! <strong>Fill in your credit card and you're good to go!</strong>
         </div>
     </div>
 
