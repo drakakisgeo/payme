@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Payment Completed</title>
+    <title>{!! trans('ocp.mailtitle') !!}</title>
 </head>
 <body>
-<h3>Payment Completed</h3>
-<p>We would like to inform you that the payment completed successfully!</p>
+<h3>{!! trans('ocp.mailresult') !!}</h3>
+<p>{!! trans('ocp.mailbody') !!}</p>
 <hr>
-<p>Amount: <strong>{!! $payment->amount !!} €</strong></p>
-<h6>Description</h6>
+<p>{!! trans('ocp.mailamount') !!}: <strong>{!! $payment->amount !!} {!! trans('ocp.currencysymbol') !!}</strong></p>
+<h6>{!! trans('ocp.maildescription') !!}</h6>
 <p>{!! $payment->description !!}</p>
-<p>Best Regards,<br>G.Drakakis</p>
+<p>{!! trans('ocp.mailsign') !!}<br>{!! trans('ocp.mailsignname') !!}</p>
 </body>
 </html>

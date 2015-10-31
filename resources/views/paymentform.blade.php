@@ -4,26 +4,25 @@
     @include('partials.errors')
     <div class="row">
         <div class="text-center" style="margin-top:50px;margin-bottom:20px;">
-            <img src="{{URL::to('/')}}/logo.gif"
-                 alt="Lollypop logo">
+            <img src="{{URL::to('/')}}/logo.gif" alt="Lollypop logo">
             <p>
-                <small>Online Payments for Lollypop Services like Clicknsend, Billit and more...</small>
+                <small>{!! trans('ocp.aboutapp') !!}</small>
             </p>
         </div>
-        <div class="well">Lollypop created a special checkout page for you! <strong>Fill in your credit card and you're good to go!</strong>
+        <div class="well">{!! trans('ocp.explanation') !!}</strong>
         </div>
     </div>
 
     <div class="row">
         <div class="col-lg-6">
-            <h2>Your payment information!</h2>
+            <h2>{!! trans('ocp.paymenth2') !!}</h2>
             <hr>
-            This payment is about
+            {!! trans('ocp.aboutpayment') !!}
             <blockquote>
                 {!! $payment->description !!}
             </blockquote>
             <hr>
-            Amount to be paid
+            {!! trans('ocp.amounttobepaid') !!}
             <blockquote>
                 <div style="font-size:2em;color:green">{!! $payment->amount !!}
                     <span
@@ -32,7 +31,7 @@
         </div>
         <div class="col-lg-6">
             <form method="post" action="/checkout/{!! Request::segment(2) !!}" class="form-inline">
-                <h2>Payment Form</h2>
+                <h2>{!! trans('ocp.formtitle') !!}</h2>
                 <hr>
                 <div id="dropin-container"></div>
                 <br>
