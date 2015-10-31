@@ -1,10 +1,6 @@
 {
   "name": "drakakisgeo/checkout",
   "description": "Payme. A micro web app to collect payments with credit cards",
-  "keywords": [
-    "framework",
-    "laravel"
-  ],
   "license": "MIT",
   "type": "project",
   "require": {
@@ -16,7 +12,9 @@
     "guzzlehttp/guzzle": "~5.3|~6.0",
     "maknz/slack": "dev-master",
     "bugsnag/bugsnag-laravel": "1.*",
-    "php-curl-class/php-curl-class": "^4.6"
+    "php-curl-class/php-curl-class": "^4.6",
+    "barryvdh/laravel-ide-helper": "^2.1",
+    "doctrine/dbal": "^2.5"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
@@ -48,6 +46,8 @@
       "php artisan clear-compiled"
     ],
     "post-update-cmd": [
+      "php artisan clear-compiled",
+      "php artisan ide-helper:generate",
       "php artisan optimize"
     ],
     "post-root-package-install": [

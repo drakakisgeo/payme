@@ -142,6 +142,7 @@ return [
     Collective\Html\HtmlServiceProvider::class,
     App\Providers\ClefServiceProvider::class,
     Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider::class,
+    Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     'Maknz\Slack\SlackServiceProvider',
     'Lollypop\Gateways\GatewaysServiceProvider',
 

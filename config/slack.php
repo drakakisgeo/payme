@@ -13,7 +13,7 @@ return [
   |
   */
 
-  'endpoint' => 'https://hooks.slack.com/services/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',
+  'endpoint' => getenv('SLACK_ENDPOINT'),
 
   /*
   |-------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
   |
   */
 
-  'channel' => '#billing',
+  'channel' => '#'.getenv('SLACK_CHANNEL'),
 
   /*
   |-------------------------------------------------------------
@@ -38,7 +38,7 @@ return [
   |
   */
 
-  'username' => 'CheckoutApp',
+  'username' => getenv('SLACK_USERNAME'),
 
   /*
   |-------------------------------------------------------------
