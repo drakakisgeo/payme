@@ -32,9 +32,10 @@ return [
     'paynow'=>'Pay now',
     'noLinksFound'=>'No Payment links found.',
     'expired'=>'EXPIRED',
+    'paid'=>'PAID',
     // Table header row
     'about'=>'ABOUT',
-    'paid'=>'PAID',
+    'paidat'=>'PAID AT',
     'action'=>'ACTION',
     'amount'=>'AMOUNT',
     'status'=>'STATUS',

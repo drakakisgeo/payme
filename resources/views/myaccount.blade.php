@@ -22,7 +22,7 @@
             <thead>
             <tr>
                 <th>{!! trans('ocp.about') !!}</th>
-                <th>{!! trans('ocp.paid') !!}</th>
+                <th>{!! trans('ocp.paidat') !!}</th>
                 <th>{!! trans('ocp.action') !!}</th>
                 <th>{!! trans('ocp.amount') !!}</th>
                 <th>{!! trans('ocp.status') !!}</th>
@@ -46,7 +46,7 @@
                     </td>
                     <td>
                         @if($payment->paid)
-                            <span class="success" style="color:green" title="{!! $payment->gatewayref_id !!}"><strong>PAID</strong></span>
+                            <span class="success" style="color:green" title="{!! $payment->gatewayref_id !!}"><strong>{!! trans('ocp.paid') !!}</strong></span>
                         @else
                             @if(!$payment->active)
                                 <span style="color:darkred;font-weight:bold">{!! trans('ocp.expired') !!}</span>
