@@ -24,4 +24,18 @@ return [
   'mailsign'        => 'Best Regards,',
   'mailsignname'    => 'G.Drakakis',
 
+    // My account
+
+  'welcome' => 'Welcome <strong>:username</strong>',
+    'nopending'=>'Seems that you don\'t have any pending payments!',
+    'pending'=>'There is at least one pending payment in your account!',
+    'paynow'=>'Pay now',
+    'noLinksFound'=>'No Payment links found.',
+    'expired'=>'EXPIRED',
+    // Table header row
+    'about'=>'ABOUT',
+    'paid'=>'PAID',
+    'action'=>'ACTION',
+    'amount'=>'AMOUNT',
+    'status'=>'STATUS',
 ];

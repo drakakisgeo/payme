@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Events\PaymentWasPaid;
 use App\Http\Requests;
 use App\Payment;
-use App\User;
-use Braintree_Customer;
-use Braintree_Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,28 +29,30 @@ class PaymentsController extends Controller
         $payment = Payment::where('code', $paymentcode)->firstOrFail();
 
         try{
-            $this->paymentmethod->pay($payment->amount,$request);
-        }catch(\Exception $e){
+            $this->paymentmethod->pay($payment->amount, $request);
+        }catch (\Exception $e){
             \Bugsnag::notifyError("BrainTreeError", $e->getMessage());
-            return redirect()->back()->with("errorMsg","Ops! Couldn't make the payment, make sure you are entering valid data.");
+
+            return redirect()->back()->with("errorMsg",
+              "Ops! Couldn't make the payment, make sure you are entering valid data.");
         }
-        
+
         $this->updatePaymentStatus($payment);
         event(new PaymentWasPaid($payment));
+
         return redirect(route('thankyou'));
 
     }
 
     public function myAcount()
     {
-        $user = User::with('unpaidPayment')->where('id', Auth::user()->id)->firstOrFail();
-        $unpaid = $user->unpaidPayment->first();
+        $user = Auth::user();
+        $paymentLinks = Payment::where('user_id', $user->id)->orderBy('id','desc')->paginate(15);
 
-        if (!is_null($unpaid)) {
-            return redirect('/payment/' . $unpaid->code);
-        }else {
-            return view('myaccount')->with('user', $user);
-        }
+        return view('myaccount')
+          ->with('user', Auth::user())
+          ->with('pendingLinks', $user->hasPendings() ? true : false)
+          ->with('paymentLinks', $paymentLinks);
 
     }
 

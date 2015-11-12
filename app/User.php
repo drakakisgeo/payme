@@ -76,9 +76,10 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany('App\Payment');
     }
 
-    public function unpaidPayment(){
+    public function hasPendings(){
         return $this->hasMany('App\Payment')
                 ->where('active',1)
-                ->where('paid',0);
+                ->where('paid',0)
+                ->count('id');
     }
 }

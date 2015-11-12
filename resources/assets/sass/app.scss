@@ -1,2 +1,25 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// Icons
 
+.iconAlert{
+  font-size:5em;
+  color:darkred;
+}
+
+.iconSuccess{
+  font-size:5em;
+  color:green;
+}
+
+@mixin alertHeader($color) {
+  text-align: center;
+  font-size:2em;
+  color: $color;
+}
+
+h4.alertHeader{
+  @include alertHeader(darkred);
+}
+
+h4.successHeader{
+  @include alertHeader(green);
+}
