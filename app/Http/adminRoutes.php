@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'adcp', 'middleware' => 'auth.basic'], function () {
+Route::group(['prefix' => getenv('ADMIN_BASE_PATH'), 'middleware' => 'auth.basic'], function () {
 
 
     Route::get('/', [
