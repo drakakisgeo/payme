@@ -144,7 +144,7 @@ return [
     Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider::class,
     Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     'Maknz\Slack\SlackServiceProvider',
-    'Lollypop\Gateways\GatewaysServiceProvider',
+    App\Providers\GatewaysServiceProvider::class,
 
   ],
     /*

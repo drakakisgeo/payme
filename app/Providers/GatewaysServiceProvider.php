@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Lollypop\Gateways;
+namespace App\Providers;
 
 
 use Illuminate\Support\ServiceProvider;
