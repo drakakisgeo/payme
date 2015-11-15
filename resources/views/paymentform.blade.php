@@ -5,6 +5,7 @@
     <div class="row">
         <div class="text-center" style="margin-top:50px;margin-bottom:20px;">
             <img src="{{URL::to('/')}}/logo.gif" alt="Lollypop logo">
+
             <p>
                 <small>{!! trans('ocp.aboutapp') !!}</small>
             </p>
@@ -30,23 +31,29 @@
             </blockquote>
         </div>
         <div class="col-lg-6">
-            <form method="post" action="/checkout/{!! Request::segment(2) !!}" class="form-inline">
-                <h2>{!! trans('ocp.formtitle') !!}</h2>
-                <hr>
-                <div id="dropin-container"></div>
-                <br>
-                <input type="submit" value="Pay now!" class="btn btn-success btn-lg">
-            </form>
+            @if(config('paymentMethod')=='BrainTree')
+                <form method="post" action="/checkout/{!! Request::segment(2) !!}" class="form-inline">
+                    <h2>{!! trans('ocp.formtitle') !!}</h2>
+                    <hr>
+                    <div id="dropin-container"></div>
+                    <br>
+                    <input type="submit" value="Pay now!" class="btn btn-success btn-lg">
+                </form>
+            @else
+                <h5>Please Implement a form.</h5>
+            @endif
         </div>
     </div>
 
 @stop
 
 @section('footerjs')
-    <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
-    <script>
-        braintree.setup("<?php echo Braintree_ClientToken::generate(); ?>", "dropin", {
-            container: "dropin-container"
-        });
-    </script>
+    @if(config('paymentMethod')=='BrainTree')
+        <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+        <script>
+            braintree.setup("<?php echo Braintree_ClientToken::generate(); ?>", "dropin", {
+                container: "dropin-container"
+            });
+        </script>
+    @endif
 @stop

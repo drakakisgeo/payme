@@ -16,7 +16,9 @@ class GatewaysServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
         $this->app->bind('Lollypop\Gateways\GatewayMethodInterface', 'Lollypop\Gateways\Braintree');
+        $this->app['config']['paymentMethod'] = 'BrainTree';
     }
 
 

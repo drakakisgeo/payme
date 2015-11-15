@@ -31,10 +31,8 @@ class PaymentsController extends Controller
         try{
             $this->paymentmethod->pay($payment->amount, $request);
         }catch (\Exception $e){
-            \Bugsnag::notifyError("BrainTreeError", $e->getMessage());
-
-            return redirect()->back()->with("errorMsg",
-              "Ops! Couldn't make the payment, make sure you are entering valid data.");
+            \Bugsnag::notifyError("PaymentMethodError", $e->getMessage());
+            return redirect()->back()->with("errorMsg",trans('ocp.paymentError'));
         }
 
         $this->updatePaymentStatus($payment);

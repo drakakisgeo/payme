@@ -14,6 +14,7 @@ return [
   'authorizedmsg'   => '~You need to be authorized. <strong>Press the "Log in" button and follow the instructions!</strong> ~',
   'footer'          => 'Lollypop Web Services By GD - Lapithou 11 str., 2410 Egkomi Nicosia - Cyprus<br>
     <a href="http://lollypop.gr/en/support-en/privacy-policy" target="_blank">Privacy policy</a> | <a href="http://lollypop.gr/en/support-en/return-refund-policy" target="_blank">Refund Policy</a>',
+  'paymentError'    => "Ops! Couldn't make the payment, make sure you are entering valid data.",
 
     // Email
   'mailtitle'       => 'Payment Completed',
@@ -26,17 +27,17 @@ return [
 
     // My account
 
-  'welcome' => 'Welcome <strong>:username</strong>',
-    'nopending'=>'Seems that you don\'t have any pending payments!',
-    'pending'=>'There is at least one pending payment in your account!',
-    'paynow'=>'Pay now',
-    'noLinksFound'=>'No Payment links found.',
-    'expired'=>'EXPIRED',
-    'paid'=>'PAID',
+  'welcome'      => 'Welcome <strong>:username</strong>',
+  'nopending'    => 'Seems that you don\'t have any pending payments!',
+  'pending'      => 'There is at least one pending payment in your account!',
+  'paynow'       => 'Pay now',
+  'noLinksFound' => 'No Payment links found.',
+  'expired'      => 'EXPIRED',
+  'paid'         => 'PAID',
     // Table header row
-    'about'=>'ABOUT',
-    'paidat'=>'PAID AT',
-    'action'=>'ACTION',
-    'amount'=>'AMOUNT',
-    'status'=>'STATUS',
+  'about'        => 'ABOUT',
+  'paidat'       => 'PAID AT',
+  'action'       => 'ACTION',
+  'amount'       => 'AMOUNT',
+  'status'       => 'STATUS',
 ];
