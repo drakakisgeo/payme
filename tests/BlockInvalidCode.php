@@ -4,14 +4,14 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class AuthorizedpageTest extends TestCase
+class BlockInvalidCode extends TestCase
 {
+
     /**
      * @test
      */
-    public function account_page_protected_from_guests()
-    {
-        $this->visit('/myaccount')
-                ->see('You need to be authorized');
+    public function inform_user_for_invalid_paymentcode(){
+        $this->visit('/payment/testing-wrong-code')
+          ->see('This payment is not valid');
     }
 }

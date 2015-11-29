@@ -8,13 +8,6 @@ Route::get('/', function () {
 });
 
 /**
- * Thank you for your payment
- */
-Route::get('thankyou', ['as'=>'thankyou',function () {
-    return view('thankyou');
-}]);
-
-/**
  * Get a specific Payment Task
  * Input variable 'payment' is generated in the before filter.
  */
@@ -30,21 +23,37 @@ Route::get('/payment/{paymentcode}', [
  */
 Route::post('/checkout/{paymentcode}','PaymentsController@makePayment');
 
+/**
+ * Thank you for your payment
+ */
+Route::get('thankyou', ['as'=>'thankyou', function () {
+    return view('thankyou');
+}]);
 
+/**
+ * Customer page to see the payment links
+ */
 Route::get('myaccount', [
   'as'         => 'customer.dashboard',
   'middleware' => 'auth',
   'uses'       => 'PaymentsController@myAcount'
 ]);
 
+/**
+ * Clef routing
+ */
 include('clefRoutes.php');
 
 
-// Admin routes
+/**
+ * Admin pages routing
+ */
 include('adminRoutes.php');
 
 
-// Testing routes, only locally
+/**
+ * Testing Routing [Development only]
+ */
 if (App::environment() == 'local') {
     include('TestingRoutes.php');
 }

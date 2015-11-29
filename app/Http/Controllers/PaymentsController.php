@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Events\PaymentWasPaid;
 use App\Http\Requests;
 use App\Payment;
+use Bugsnag;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Lollypop\Gateways\GatewayMethodInterface;
@@ -30,22 +32,22 @@ class PaymentsController extends Controller
 
         try{
             $this->paymentmethod->pay($payment->amount, $request);
-        }catch (\Exception $e){
-            \Bugsnag::notifyError("PaymentMethodError", $e->getMessage());
-            return redirect()->back()->with("errorMsg",trans('ocp.paymentError'));
+        }catch (Exception $e){
+            Bugsnag::notifyError("PaymentMethodError", $e->getMessage());
+            return redirect()->back()->with("errorMsg", trans('ocp.paymentError'));
         }
 
         $this->updatePaymentStatus($payment);
         event(new PaymentWasPaid($payment));
 
-        return redirect(route('thankyou'));
+        return redirect()->route('thankyou');
 
     }
 
     public function myAcount()
     {
         $user = Auth::user();
-        $paymentLinks = Payment::where('user_id', $user->id)->orderBy('id','desc')->paginate(15);
+        $paymentLinks = Payment::where('user_id', $user->id)->orderBy('id', 'desc')->paginate(15);
 
         return view('myaccount')
           ->with('user', Auth::user())

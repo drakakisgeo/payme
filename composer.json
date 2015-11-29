@@ -9,7 +9,7 @@
     "braintree/braintree_php": "^3.5",
     "ramsey/uuid": "~2.8",
     "laravelcollective/html": "5.1.*",
-    "guzzlehttp/guzzle": "~5.3|~6.0",
+    "guzzlehttp/guzzle": "~6.0",
     "maknz/slack": "dev-master",
     "bugsnag/bugsnag-laravel": "1.*",
     "php-curl-class/php-curl-class": "^4.6",

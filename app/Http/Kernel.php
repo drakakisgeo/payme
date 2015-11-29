@@ -18,7 +18,7 @@ class Kernel extends HttpKernel
       \Illuminate\Session\Middleware\StartSession::class,
       \Illuminate\View\Middleware\ShareErrorsFromSession::class,
       \App\Http\Middleware\VerifyCsrfToken::class,
-      \App\Http\Middleware\BeforeAutoTrimmer::class
+      \App\Http\Middleware\BeforeAutoTrimmer::class,
     ];
 
     /**
@@ -31,5 +31,7 @@ class Kernel extends HttpKernel
       'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
       'guest'      => \App\Http\Middleware\RedirectIfAuthenticated::class,
       'validpayment'=>  \App\Http\Middleware\BeforeValidPayment::class,
+      'auth.isadmin'=>  \App\Http\Middleware\isAdmin::class,
+
     ];
 }

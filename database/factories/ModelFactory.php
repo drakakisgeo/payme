@@ -19,3 +19,17 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(App\Payment::class, function (Faker\Generator $faker) {
+    return [
+      'description' => $faker->sentence(),
+      'amount' => $faker->randomFloat(2,10,100),
+      'user_id' => array_rand(App\User::lists('id','id')->toArray()),
+      'code' => \Rhumsaa\Uuid\Uuid::uuid4()->toString(),
+      'active'=> 1,
+      'paid'=>0,
+      'invoiced'=>0,
+      'paid_at'=>null
+    ];
+});

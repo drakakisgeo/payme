@@ -31,8 +31,11 @@ class PaymentCompletedActions
 
         // Send Email
         $this->mailer->send('emails.paid', ['user' => $user,'payment'=>$payment], function ($m) use ($user) {
-                $m->to($user->email, $user->name)->subject('Your Payment completed!')->bcc(getenv('EMAIL_RECEIVE_NOTICE'));
+                $m->to($user->email, $user->name)
+                    ->subject('Your Payment completed!')
+                    ->bcc(getenv('EMAIL_RECEIVE_NOTICE'));
             });
+
         try{
             Slack::send($user->name.'('.$user->email.') paid '.$payment->amount.'€ !');
         }catch(\Exception $e){
